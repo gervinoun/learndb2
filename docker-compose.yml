@@ -1,4 +1,5 @@
 services:
+
   web:
     build:
       context: .
@@ -13,8 +14,11 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: project
+    ports:
+      - "3306:3306"
     volumes:
-      - ta24learndbdata:/var/lib/mysql
+      - ta24adbdata:/var/lib/mysql
 
   adminer:
     image: adminer
@@ -23,4 +27,4 @@ services:
       - "8080:8080"
 
 volumes:
-  ta24learndbdata:
+  ta24adbdata:
